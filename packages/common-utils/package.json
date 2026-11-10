@@ -46,18 +46,18 @@
     "typescript": "^6.0.3"
   },
   "scripts": {
-    "dev": "nodemon --on-change-only --watch ./src --ext ts --exec \"yarn dev:build\"",
-    "dev:build": "yarn build",
-    "build": "tsup && yarn build:types",
-    "build:types": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "dev": "node init && nodemon --on-change-only --watch ./src --ext ts --exec \"yarn dev:build\"",
+    "dev:build": "node init && yarn build",
+    "build": "node init && tsup && yarn build:types",
+    "build:types": "node init && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "ci:build": "yarn build",
     "lint": "npx eslint . --ext .ts --max-warnings 80",
     "lint:fix": "npx eslint . --ext .ts --fix",
     "ci:lint": "yarn lint && yarn tsc --noEmit",
     "ci:unit": "jest --ci --coverage",
-    "dev:unit": "jest --watchAll",
+    "dev:unit": "node init && jest --watchAll",
     "ci:int": "DOTENV_CONFIG_PATH=.env.test jest --config jest.int.config.js --runInBand --ci --coverage --passWithNoTests",
-    "dev:int": "DOTENV_CONFIG_PATH=.env.test jest --config jest.int.config.js --watchAll --runInBand",
-    "dev:mutation": "stryker run"
+    "dev:int": "node init && DOTENV_CONFIG_PATH=.env.test jest --config jest.int.config.js --watchAll --runInBand",
+    "dev:mutation": "node init && stryker run"
   }
 }

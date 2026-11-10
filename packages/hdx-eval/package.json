@@ -34,13 +34,13 @@
     "typescript": "^6.0.3"
   },
   "scripts": {
-    "build": "rimraf ./dist && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
-    "dev": "NODE_OPTIONS=--max-old-space-size=8192 ./scripts/env.sh tsx src/cli.ts",
+    "build": "node init && rimraf ./dist && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "dev": "node init && NODE_OPTIONS=--max-old-space-size=8192 ./scripts/env.sh tsx src/cli.ts",
     "lint": "npx eslint . --ext .ts --max-warnings 0",
     "lint:fix": "npx eslint . --ext .ts --fix",
     "ci:lint": "yarn lint && yarn tsc --noEmit",
     "ci:unit": "jest --ci --coverage --forceExit",
-    "dev:unit": "jest --watch",
+    "dev:unit": "node init && jest --watch",
     "viewer": "node scripts/viewer/server.js"
   }
 }

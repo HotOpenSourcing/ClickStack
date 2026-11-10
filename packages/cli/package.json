@@ -26,8 +26,8 @@
     "bun": "1.3.11"
   },
   "scripts": {
-    "dev": "tsx src/cli.tsx",
-    "build": "tsup",
+    "dev": "node init && tsx src/cli.tsx",
+    "build": "node init && tsup",
     "prepublishOnly": "yarn build",
     "compile": "bun build src/cli.tsx --compile --outfile dist/hdx",
     "compile:linux": "bun build src/cli.tsx --compile --target=bun-linux-x64 --outfile dist/hdx-linux-x64",
@@ -37,7 +37,7 @@
     "ci:build": "tsup",
     "ci:lint": "yarn lint && yarn tsc --noEmit",
     "ci:unit": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand --ci --passWithNoTests",
-    "dev:unit": "NODE_OPTIONS=--experimental-vm-modules jest --watchAll --runInBand"
+    "dev:unit": "node init && NODE_OPTIONS=--experimental-vm-modules jest --watchAll --runInBand"
   },
   "devDependencies": {
     "@clickhouse/client": "1.23.0-head.fae5998.1",
